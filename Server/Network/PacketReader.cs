@@ -106,7 +106,17 @@ namespace Server.Network
 
 			return (uint)((m_Data[m_Index++] << 24) | (m_Data[m_Index++] << 16) | (m_Data[m_Index++] << 8) | m_Data[m_Index++]);
 		}
-
+        
+        public uint ReadUInt32LE()
+        {
+            if ((m_Index + 4) > m_Size)
+            {
+                return 0;
+            }
+            m_Index += 3;
+            return (uint)((m_Data[m_Index--] << 24) | (m_Data[m_Index--] << 16) | (m_Data[m_Index--] << 8) | m_Data[m_Index--]);
+        }
+        
 		public ushort ReadUInt16()
 		{
 			if ((m_Index + 2) > m_Size)
