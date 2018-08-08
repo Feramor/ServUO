@@ -3036,7 +3036,7 @@ namespace Server.Network
 
 		public static void LoginServerSeed(NetState state, PacketReader pvSrc)
 		{
-			state.Seed = pvSrc.ReadUInt32();
+			state.Seed = pvSrc.ReadUInt32LE();
 			state.Seeded = true;
 
 			if (state.Seed == 0)
